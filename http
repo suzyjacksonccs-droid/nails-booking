@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glamour Nails Booking</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>💅 Glamour Nails Salon</h1>
+    <p>Book your next appointment in style</p>
+  </header>
+
+  <section class="gallery">
+    <img src="images/nails1.jpg" alt="Nail Art 1">
+    <img src="images/nails2.jpg" alt="Nail Art 2">
+    <img src="images/nails3.jpg" alt="Nail Art 3">
+  </section>
+
+  <section id="booking-section">
+    <h2>Book Your Appointment</h2>
+    <form id="bookingForm">
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="date" id="date" required>
+      <input type="time" id="time" required>
+      <select id="service" required>
+        <option value="">Choose a Service</option>
+        <option>Manicure</option>
+        <option>Pedicure</option>
+        <option>Nail Art</option>
+        <option>Full Set</option>
+      </select>
+      <button type="submit">Book Now</button>
+    </form>
+    <p id="success-message"></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Glamour Nails Salon — Beauty in Simplicity</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+}
+
+header {
+  padding: 40px 20px;
+  background-color: #111;
+  border-bottom: 1px solid #333;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1rem;
+  color: #aaa;
+}
+
+/* Gallery */
+.gallery {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 30px;
+}
+
+.gallery img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  filter: grayscale(100%);
+  border-radius: 10px;
+  transition: all 0.4s;
+}
+
+.gallery img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+
+/* Booking Form */
+#booking-section {
+  background-color: #111;
+  padding: 40px 20px;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+input, select {
+  padding: 12px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background-color: #000;
+  color: #fff;
+  font-size: 1rem;
+}
+
+button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #ccc;
+}
+
+#success-message {
+  margin-top: 15px;
+  color: #9fff9f;
+  font-weight: 500;
+}
+
+footer {
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+document.getElementById('bookingForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const date = document.getElementById('date').value;
+  const time = document.getElementById('time').value;
+  const service = document.getElementById('service').value;
+
+  document.getElementById('success-message').innerText =
+    `Thank you ${name}! Your ${service} appointment is booked for ${date} at ${time}.`;
+  
+  // Clear the form
+  e.target.reset();
+});
